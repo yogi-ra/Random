@@ -1,0 +1,17 @@
+# openssl req -new -x509 -keyout scep.key -out scep.crt -days 1100 \
+#    -config scep.openssl.cnf
+
+[ req ]
+default_bits = 3072
+distinguished_name = req_distinguished_name
+req_extensions = v3_scep_extensions
+x509_extensions = v3_scep_extensions
+prompt = no
+
+[ req_distinguished_name ]
+commonName=MYCERTIFICATE-SCEPCA
+
+[ v3_scep_extensions ]
+subjectKeyIdentifier    = hash
+basicConstraints        = CA:FALSE
+authorityKeyIdentifier  = keyid,issuer
